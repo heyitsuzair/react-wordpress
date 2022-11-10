@@ -4,6 +4,7 @@ import { getPosts } from "../utils/api";
 import { Link } from "react-router-dom";
 import { Interweave } from "interweave";
 import Moment from "react-moment";
+import Spinner from "../components/Spinner";
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
@@ -28,7 +29,7 @@ export default function Home() {
   return (
     <>
       {loading ? (
-        <h1>Loading....</h1>
+        <Spinner />
       ) : (
         <div className="mt-5 post-container">
           {posts.map((post) => {
