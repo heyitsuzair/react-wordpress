@@ -33,7 +33,7 @@ export default function Home() {
         <div className="mt-5 post-container">
           {posts.map((post) => {
             return (
-              <div key={post.id} className="card border-dark mb-3 w-50">
+              <div key={post.id} className="card border-dark mx-auto mb-3 w-50">
                 <div className="card-header">
                   <Link to={`post/` + post.id}>{post.title.rendered}</Link>
                 </div>
