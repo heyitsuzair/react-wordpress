@@ -42,8 +42,11 @@ export default function Home() {
                     <Interweave content={post.content.rendered} />
                   </div>
                 </div>
-                <div className="card-footer">
+                <div className="card-footer d-flex flex-column gap-3">
                   <Moment fromNow>{post.date}</Moment>
+                  <Link to={`post/` + post.id} className="btn btn-info">
+                    Read More
+                  </Link>
                 </div>
               </div>
             );
