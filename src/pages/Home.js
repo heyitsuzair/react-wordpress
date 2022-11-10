@@ -17,7 +17,9 @@ export default function Home() {
       console.log(data);
       setLoading(false);
     } catch (error) {
-      console.warn(error.response.data);
+      console.warn(error.response.data.message);
+      setError(error.response.data.message);
+      setLoading(false);
     }
   };
 
@@ -31,28 +33,34 @@ export default function Home() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="mt-5 post-container">
-          {posts.map((post) => {
-            return (
-              <div key={post.id} className="card border-dark mx-auto mb-3 w-50">
-                <div className="card-header">
-                  <Link to={`post/` + post.id}>{post.title.rendered}</Link>
-                </div>
-                <div className="card-body">
-                  <div className="card-text post-content">
-                    <Interweave content={post.content.rendered} />
+        <>
+          {error && <div className="alert alert-danger">{error}</div>}
+          <div className="mt-5 post-container">
+            {posts.map((post) => {
+              return (
+                <div
+                  key={post.id}
+                  className="card border-dark mx-auto mb-3 w-50"
+                >
+                  <div className="card-header">
+                    <Link to={`post/` + post.id}>{post.title.rendered}</Link>
+                  </div>
+                  <div className="card-body">
+                    <div className="card-text post-content">
+                      <Interweave content={post.content.rendered} />
+                    </div>
+                  </div>
+                  <div className="card-footer d-flex flex-column gap-3">
+                    <Moment fromNow>{post.date}</Moment>
+                    <Link to={`post/` + post.id} className="btn btn-info">
+                      Read More
+                    </Link>
                   </div>
                 </div>
-                <div className="card-footer d-flex flex-column gap-3">
-                  <Moment fromNow>{post.date}</Moment>
-                  <Link to={`post/` + post.id} className="btn btn-info">
-                    Read More
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </>
       )}
     </>
   );
