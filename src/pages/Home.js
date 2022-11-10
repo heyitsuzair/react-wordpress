@@ -14,7 +14,6 @@ export default function Home() {
     try {
       const { data } = await axios.get(getPosts);
       setPosts(data);
-      console.log(data);
       setLoading(false);
     } catch (error) {
       console.warn(error.response.data.message);
