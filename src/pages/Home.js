@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-import { getPosts, wpposts } from "../utils/api";
-=======
 import { wpposts } from "../utils/api";
->>>>>>> dashboard
 import { Link } from "react-router-dom";
 import { Interweave } from "interweave";
 import Moment from "react-moment";
