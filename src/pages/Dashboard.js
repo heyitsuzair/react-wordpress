@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
+import { wpposts } from "../utils/api";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -14,11 +16,37 @@ export default function Dashboard() {
     message: "",
   });
 
-  const { user_nicename } = JSON.parse(localStorage.getItem("wordpress-user"));
+  const formData = {
+    title: data.title,
+    content: data.content,
+    status: "publish",
+  };
 
-  const handleCreatePost = (e) => {
+  const handleCreatePost = async (e) => {
     e.preventDefault();
     setData({ ...data, loading: true });
+    try {
+      const response = await axios.post(wpposts, formData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + data.token,
+        },
+      });
+      setData({
+        ...data,
+        loading: false,
+        postCreated: true,
+        message: response.statusText,
+      });
+    } catch (error) {
+      console.warn(error);
+      setData({
+        ...data,
+        loading: false,
+        postCreated: false,
+        message: error.response.data.message,
+      });
+    }
   };
 
   const handleInputChange = (e) => {
