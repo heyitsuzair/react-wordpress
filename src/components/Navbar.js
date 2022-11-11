@@ -1,6 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("wordpress-user");
+    navigate("/login");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark">
       <div className="container-fluid">
@@ -27,13 +34,23 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                className="nav-link text-light active"
-                aria-current="page"
-                to="/login"
-              >
-                Login
-              </Link>
+              {localStorage.getItem("wordpress-user") ? (
+                <Link
+                  className="nav-link text-light active"
+                  aria-current="page"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Link>
+              ) : (
+                <Link
+                  className="nav-link text-light active"
+                  aria-current="page"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>
