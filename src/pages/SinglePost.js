@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { getPosts } from "../utils/api";
+import { getPosts, wpposts } from "../utils/api";
 import { Interweave } from "interweave";
 import Moment from "react-moment";
 import Spinner from "../components/Spinner";
@@ -13,7 +13,7 @@ export default function SinglePost() {
 
   const fetchPost = async () => {
     try {
-      const { data } = await axios.get(getPosts + `/${id}`);
+      const { data } = await axios.get(wpposts + `/${id}`);
       setPost(data);
       setLoading(false);
     } catch (error) {
