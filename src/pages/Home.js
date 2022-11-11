@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { getPosts } from "../utils/api";
+import { getPosts, wpposts } from "../utils/api";
 import { Link } from "react-router-dom";
 import { Interweave } from "interweave";
 import Moment from "react-moment";
@@ -12,7 +12,7 @@ export default function Home() {
 
   const fetchPosts = async () => {
     try {
-      const { data } = await axios.get(getPosts);
+      const { data } = await axios.get(wpposts);
       setPosts(data);
       setLoading(false);
     } catch (error) {
