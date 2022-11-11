@@ -35,13 +35,22 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               {localStorage.getItem("wordpress-user") ? (
-                <Link
-                  className="nav-link text-light active"
-                  aria-current="page"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </Link>
+                <div className="d-flex align-items-center">
+                  <Link
+                    className="nav-link text-light active"
+                    aria-current="page"
+                    to={"/dashboard"}
+                  >
+                    Dashboard
+                  </Link>
+                  <div
+                    className="nav-link text-light active"
+                    aria-current="page"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </div>
+                </div>
               ) : (
                 <Link
                   className="nav-link text-light active"
