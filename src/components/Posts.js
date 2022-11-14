@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { fetchBlogPosts } from "../utils/api";
+import Pagination from "./Pagination";
+import Post from "./Post";
 import Spinner from "./Spinner";
 
 export default function Posts({ pageNo }) {
@@ -36,7 +38,21 @@ export default function Posts({ pageNo }) {
       {loading === true ? (
         <Spinner />
       ) : (
-        <>{error && <div className="alert alert-danger">{error}</div>}</>
+        <>
+          {error && <div className="alert alert-danger">{error}</div>}
+          {posts.map((postItem) => {
+            return (
+              <div key={postItem.id}>
+                <Post postItem={postItem} />
+              </div>
+            );
+          })}
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+          />
+        </>
       )}
     </>
   );
