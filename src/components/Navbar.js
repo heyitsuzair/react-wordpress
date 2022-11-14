@@ -56,6 +56,7 @@ export default function Navbar() {
                     className="nav-link text-light active"
                     aria-current="page"
                     onClick={handleLogout}
+                    style={{ cursor: "pointer" }}
                   >
                     Logout
                   </div>

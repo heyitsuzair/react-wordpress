@@ -3,7 +3,7 @@ import Posts from "../components/Posts";
 
 export default function Blogs() {
   return (
-    <div>
+    <div className="container">
       <Posts pageNo="1" />
     </div>
   );

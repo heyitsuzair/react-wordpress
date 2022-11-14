@@ -95,3 +95,11 @@
     transform: rotate(360deg);
   }
 }
+.td-none {
+  text-decoration: none;
+  color: black;
+}
+.post-thumbnail {
+  width: 50%;
+  height: auto;
+}
