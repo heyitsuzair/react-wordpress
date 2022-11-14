@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SinglePost from "./pages/SinglePost";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Blogs from "./pages/Blogs";
+import Page from "./pages/Page";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="post/:id" element={<SinglePost />} />
           <Route path="login" element={<Login />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="page/:pageNo" element={<Page />} />
         </Routes>
       </Router>
     </div>

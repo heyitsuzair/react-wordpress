@@ -34,6 +34,15 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
+              <Link
+                className="nav-link text-light"
+                aria-current="page"
+                to="/blogs"
+              >
+                Blogs
+              </Link>
+            </li>
+            <li className="nav-item">
               {localStorage.getItem("wordpress-user") ? (
                 <div className="d-flex align-items-center">
                   <Link
