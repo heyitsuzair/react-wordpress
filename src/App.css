@@ -103,3 +103,23 @@
   width: 50%;
   height: auto;
 }
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+}
+.pagination-container a {
+  text-decoration: none;
+  color: black;
+}
+.pagination-container .selected {
+  background-color: red;
+  color: white;
+  width: 2rem;
+  text-align: center;
+  border-radius: 4px;
+}
+.pagination-container .disabled {
+  display: none;
+}

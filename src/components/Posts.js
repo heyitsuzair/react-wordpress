@@ -1,21 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { fetchBlogPosts } from "../utils/api";
-import Pagination from "./Pagination";
 import Post from "./Post";
 import Spinner from "./Spinner";
 
-export default function Posts({ pageNo }) {
+export default function Posts({ pageNo, setTotalPages }) {
   // Converting String To Integer
   const pageNoInt = parseInt(pageNo);
 
-  const [currentPage, setCurrentPage] = useState(pageNoInt);
-  const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
+    setLoading(true);
     try {
       const { data } = await axios.get(fetchBlogPosts + pageNoInt);
       setPosts(data.posts_data);
@@ -31,7 +29,7 @@ export default function Posts({ pageNo }) {
   useEffect(() => {
     fetchPosts();
     //eslint-disable-next-line
-  }, []);
+  }, [pageNo]);
 
   return (
     <>
@@ -47,11 +45,6 @@ export default function Posts({ pageNo }) {
               </div>
             );
           })}
-          <Pagination
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            totalPages={totalPages}
-          />
         </>
       )}
     </>

@@ -8,7 +8,7 @@ export default function FeaturedImage({ src, width, height, alt, srcSet }) {
       width={width}
       height={height}
       alt={alt}
-      srcSet={srcSet}
+      srcSet={srcSet === false ? "" : srcSet}
     />
   );
 }

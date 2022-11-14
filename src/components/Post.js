@@ -18,12 +18,36 @@ export default function Post({ postItem }) {
         />
       )}
       <p className="excerpt">{postItem.excerpt}</p>
-      <div className="post-meta my-3">
+      <div className="post-meta my-2">
         <span className="author">
-          <i class="fa fa-user-circle mx-2" aria-hidden="true"></i>
+          <i className="fa fa-user-circle mx-2" aria-hidden="true"></i>
           {postItem.meta.author_name}
         </span>
       </div>
+      <div className="post-date my-2">
+        <span className="date">
+          <i className="fa fa-clock mx-2" aria-hidden="true"></i>
+          {postItem.date}
+        </span>
+      </div>
+      {postItem.categories.length > 0 && (
+        <div className="post-categories my-2 mb-5">
+          {postItem.categories.map((category, index) => {
+            // If Its Last Item Of Array Than Prevent Putting Comma
+            return index !== postItem.categories.length - 1 ? (
+              <span key={category.cat_ID} className="category">
+                <i className="fa fa-folder mx-2" aria-hidden="true"></i>
+                {category.cat_name},
+              </span>
+            ) : (
+              <span key={category.cat_ID} className="category">
+                <i className="fa fa-folder mx-2" aria-hidden="true"></i>
+                {category.cat_name}
+              </span>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
