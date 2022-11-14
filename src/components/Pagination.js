@@ -31,7 +31,10 @@ export default function Pagination({
         initialPage={initialPage}
         renderOnZeroPageCount={null}
         pageRangeDisplayed={1}
+        activeClassName="selected rounded bg-info text-center text-light"
         containerClassName="pagination-container"
+        previousClassName="rounded previous"
+        nextClassName="rounded next"
       />
     </div>
   );

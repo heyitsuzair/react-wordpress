@@ -113,13 +113,23 @@
   text-decoration: none;
   color: black;
 }
-.pagination-container .selected {
-  background-color: red;
-  color: white;
-  width: 2rem;
-  text-align: center;
-  border-radius: 4px;
-}
+
 .pagination-container .disabled {
   display: none;
+}
+.previous:hover,
+.next:hover {
+  background-color: rgb(13, 202, 240);
+}
+.previous:hover a,
+.next:hover a {
+  color: white;
+}
+.pagination-container li {
+  padding: 0 1rem;
+}
+.pagination-container li:hover {
+  background-color: rgb(13, 202, 240);
+  border-radius: 0.375rem;
+  color: white;
 }
