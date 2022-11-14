@@ -18,6 +18,12 @@ export default function Post({ postItem }) {
         />
       )}
       <p className="excerpt">{postItem.excerpt}</p>
+      <div className="post-meta my-3">
+        <span className="author">
+          <i class="fa fa-user-circle mx-2" aria-hidden="true"></i>
+          {postItem.meta.author_name}
+        </span>
+      </div>
     </div>
   );
 }
